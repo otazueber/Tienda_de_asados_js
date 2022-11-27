@@ -35,13 +35,13 @@ function crearHtml(productos, contenedor) {
 
 async function obtenerProductos() {
     var response;
-    response = await fetch('./assets/json/almacen.json');
+    response = await fetch('../assets/json/almacen.json');
     almacen = await response.json();
     console.log(almacen);
-    response = await fetch('./assets/json/vacunos.json');
+    response = await fetch('../assets/json/vacunos.json');
     vacunos = await response.json();
     console.log(vacunos);
-    response = await fetch('./assets/json/vinos.json');
+    response = await fetch('../assets/json/vinos.json');
     vinos = await response.json();
     console.log(vinos);
 }
