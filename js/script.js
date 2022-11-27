@@ -1,28 +1,103 @@
-let desloguear = document.getElementById("desloguear");
-let producto = document.getElementById("producto");
+class Producto {
+    constructor(id, imagen, descripcion, unidadMedida, precio) {
+        this.id = id;
+        this.imagen = imagen;
+        this.descripcion = descripcion;
+        this.unidadMedida = unidadMedida;
+        this.precio = precio;
+    }
+}
+let vacunos = [];
+let almacen = [];
+let vinos = [];
+
+function crearHtml(productos, contenedor) {
+    let html = "";
+    let contador = 0;
+    productos.forEach((producto) => {
+        const { id, imagen, descripcion, unidadMedida, precio } = producto;
+        contador++;
+        if (contador == 1) {
+            html = html + '<div class="row row-producto">';
+        }
+        html = html + `<div class="col-12 col-lg-3" id="${id}"><img class="producto ps-5" src="${imagen}" alt="Photo"><p>${descripcion}<br>Precio por ${unidadMedida} ${precio}</p></div>`;
+        if (contador == 4) {
+            html = html + '</div>';
+            contador = 0;
+        }
+    }
+    );
+    if (contador < 4) {
+        html = html + '</div>';
+    }
+    contenedor.innerHTML += html;
+}
+
+async function obtenerProductos() {
+    var response;
+    response = await fetch('./assets/json/almacen.json');
+    almacen = await response.json();
+    console.log(almacen);
+    response = await fetch('./assets/json/vacunos.json');
+    vacunos = await response.json();
+    console.log(vacunos);
+    response = await fetch('./assets/json/vinos.json');
+    vinos = await response.json();
+    console.log(vinos);
+}
+
+
+obtenerProductos()
+
+let contenedor = document.getElementById("productos-vacunos");
+
+if (contenedor != null) {
+    crearHtml(vacunos, contenedor);
+}
+
+contenedor = document.getElementById("productos-vinos");
+if (contenedor != null) {
+    crearHtml(vinos, contenedor);
+}
+
+contenedor = document.getElementById("productos-almacen");
+if (contenedor != null) {
+    crearHtml(almacen, contenedor);
+}
+
+let person = document.getElementById("person");
+let usuarioLogueado = false;
+const htmlUsuarioNoLogueado = '<a href="pages/login.html"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16"><path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z" /></svg></a>';
+const htmlUsuarioLogueado = '<a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-fill-dash" viewBox="0 0 16 16"><path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1Zm0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/></svg></a>';
 
 function leerCredenciales() {
     let usuario = JSON.parse(sessionStorage.getItem("credenciales"));
+
     if (usuario == null) {
-        document.getElementById("person").style.visibility = "visible";
-        desloguear.innerText = "";
+        person.innerHTML = htmlUsuarioNoLogueado;
     } else {
-        document.getElementById("person").style.visibility = "hidden";
-        desloguear.innerText = "Cerrar seción";
+        person.innerHTML = htmlUsuarioLogueado;
+        usuarioLogueado = true;
     }
+
 }
 
 leerCredenciales();
 
-function deslogearse() {
-    sessionStorage.clear();
-    document.getElementById("person").style.visibility = "visible";
-    desloguear.innerText = "";
+function LoguearDeslogearse() {
+    if (usuarioLogueado) {
+        sessionStorage.clear();
+        person.innerHTML = htmlUsuarioNoLogueado;
+        usuarioLogueado = false;
+    } else {
+        window.location.assign("./pages/login.html");
+    }
+
 }
 
-desloguear.addEventListener("click", (e) => {
+person.addEventListener("click", (e) => {
     e.preventDefault();
-    deslogearse();
+    LoguearDeslogearse();
 }
 );
 

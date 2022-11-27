@@ -19,33 +19,14 @@
 	<div class="container-fluid font bground">
 		<!-- logo -->
 		<div class="row">
-			<div class="col-12 col-lg-4 d-flex justify-content-center"></div>
-			<div class="col-12 col-lg-4 d-flex justify-content-center">
+			<div class="col-12 col-lg-12 d-flex justify-content-center">
 				<a href="#"><img class="logo" src="../assets/img/logo_Not_Vegan.png" alt="Logo"></a>
-			</div>
-			<div class="col-12 col-lg-4 d-flex justify-content-center  pt-5">
-				<a id="desloguear" href="#">cerrar secion</a>
-				<div id="person">
-					<a href="../pages/login.html"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-							fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
-							<path
-								d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z" />
-						</svg></a>
-
-				</div>
-				<div class="cart">
-					<a href="carrito.html"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-							fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-							<path
-								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-						</svg></a>
-
-				</div>
 			</div>
 		</div>
 		<!-- nav -->
 		<div class="row">
-			<div class="col-12 col-lg-12">
+			<div class="col-12 col-lg-4"></div>
+			<div class="col-6 col-lg-4">
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<button class="btn btn-secondary" type="button" data-bs-toggle="collapse"
 						data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -58,20 +39,30 @@
 								<a href="../index.html">Inicio</a>
 							</li>
 							<li class="nav-item">
-								<a href="../pages/vacunos.html">Vacunos</a>
+								<a href="vacunos.html">Vacunos</a>
 							</li>
 							<li class="nav-item">
-								<a href="../pages/almacen.html">Almacén</a>
+								<a href="almacen.html">Almacén</a>
 							</li>
 							<li class="nav-item">
-								<a aria-current="page" href="#">Vinos</a>
+								<a aria-current="page" href="#">Vinos</a>								
 							</li>
 							<li class="nav-item">
-								<a href="../pages/contacto.html">Contacto</a>
+								<a href="contacto.html">Contacto</a>
 							</li>
 						</ul>
 					</div>
 				</nav>
+			</div>
+			<div class="col-6 col-lg-4 display-flex">
+				<div id="person"></div>
+				<div class="cart" id="cart">
+					<a href="pages/carrito.html"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+							fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+							<path
+								d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+						</svg></a>
+				</div>
 			</div>
 		</div>
 		<!-- tirulo -->
@@ -81,67 +72,7 @@
 			</div>
 		</div>
 		<!-- productos -->
-		<div class="row row-producto">
-			<div class="col-12 col-lg-3">
-				<a href="#" id="producto">
-					<img class="producto ps-5" src="../assets/img/vinos/Salentein_Malbec.jpg" alt="Photo">
-					<p>Vino Salentein Malbec 750ml<br>Precio por botella: $1.390</p>
-				</a>
-			</div>
-			<div class="col-12 col-lg-3">
-				<a href="#">
-					<img class="producto ps-5" src="../assets/img/vinos/Salentein_Blanc_de_blancs.jpg" alt="Photo">
-					<p>Vino Salentein Blanc de blancs 750ml<br>Precio por botella: $990</p>
-				</a>
-			</div>
-			<div class="col-12 col-lg-3">
-				<a href="#">
-					<img class="producto ps-5" src="../assets/img/vinos/Zuccardi_Q_Malbec.jpg" alt="Photo">
-					<p>Vino Zuccardi Q Malbec 750ml<br>Precio por botella: $2.130</p>
-				</a>
-			</div>
-			<div class="col-12 col-lg-3">
-				<a href="#">
-					<img class="producto ps-5" src="../assets/img/vinos/Salentein_Numina_Cabernet_Franc.jpg"
-						alt="Photo">
-					<p>Vino Salentein Numina Cabernet Franc 750ml<br>Precio por botella: $2.270</p>
-				</a>
-			</div>
-		</div>
-		<div class="row row-producto">
-			<div class="col-12 col-lg-3">
-				<a href="#" id="producto">
-					<img class="producto ps-5" src="../assets/img/vinos/DV_Catena_Cabernet_Malbec.jpg" alt="Photo">
-					<p>Vino DV Catena Cabernet - Malbec 750ml<br>Precio por botella: $2.190</p>
-				</a>
-			</div>
-			<div class="col-12 col-lg-3">
-				<a href="#">
-					<img class="producto ps-5" src="../assets/img/vinos/Animal_Malbec.jpg" alt="Photo">
-					<p>Vino Animal Malbec 750ml<br>Precio por botella: $1.490</p>
-				</a>
-			</div>
-			<div class="col-12 col-lg-3">
-				<a href="#">
-					<img class="producto ps-5" src="../assets/img/vinos/Dv_Catena_Malbec_Malbec.jpg" alt="Photo">
-					<p>Vino Dv Catena Malbec - Malbec 750ml<br>Precio por botella: $3.990</p>
-				</a>
-			</div>
-			<div class="col-12 col-lg-3">
-				<a href="#">
-					<img class="producto ps-5" src="../assets/img/vinos/Salentein_Numina_Malbec.jpg" alt="Photo">
-					<p>Vino Salentein Numina Malbec 750ml<br>Precio por botella: $2.270</p>
-				</a>
-			</div>
-		</div>
-		<div class="row row-producto">
-			<div class="col-12 col-lg-3">
-				<a href="#">
-					<img class="producto ps-5" src="../assets/img/vinos/Zuccardi_Q_Tempranillo.jpg" alt="Photo">
-					<p>Vino Zuccardi Q Tempranillo 750ml<br>Precio por botella: $2.130</p>
-				</a>
-			</div>
-		</div>
+		<div id="productos-vinos"></div>
 		<!-- footer -->
 		<footer class="row pt-5">
 			<div class="col-12 col-lg-4 d-flex justify-content-center">

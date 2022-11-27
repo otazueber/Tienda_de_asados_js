@@ -46,6 +46,11 @@ a {
   .row-producto {
     margin-left: 4%; }
 
+.display-flex {
+  display: flex;
+  justify-content: right;
+  align-items: center; }
+
 .user-login {
   width: 270px; }
 
@@ -58,19 +63,11 @@ a {
 
 @media screen and (max-width: 768px) {
   .btn {
-    display: "flex"; }
-  #nav-cel {
-    display: "flex"; }
-  #nav-desktop {
-    display: none; } }
+    display: "flex"; } }
 
 @media screen and (min-width: 769px) {
   .btn {
-    display: none; }
-  #nav-cel {
-    display: none; }
-  #nav-desktop {
-    display: "flex"; } }
+    display: none; } }
 
 .imgFondo img {
   display: "flex";

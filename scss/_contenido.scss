@@ -17,6 +17,12 @@ a {
     }
 }
 
+.display-flex{
+    display: flex; 
+    justify-content: right;
+    align-items: center;
+}
+
 .user-login {
     width: 270px;
 }
@@ -33,23 +39,11 @@ a {
     .btn{
         display: $displayFlex;
     }
-    #nav-cel {
-        display: $displayFlex;
-    }
-    #nav-desktop {
-        display: none;
-    }
 }
 
 @media screen and (min-width: $minWidth) {
     .btn{
         display: none;
-    }
-    #nav-cel {
-        display: none;
-    }
-    #nav-desktop {
-        display: $displayFlex;
     }
 }
 
