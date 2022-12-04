@@ -1,170 +1,194 @@
 [
     {
-        "id": 1,
+        "idProducto": 1,
         "imagen": "../assets/img/vacunos/picada.jpg",
         "descripcion": "Carne picada especial",
         "unidadMedida": "kg",
-        "precio": 1.99
+        "precio": 1990,
+        "cantidad": 1
     },
     {
-        "id": 2,
+        "idProducto": 2,
         "imagen": "../assets/img/vacunos/entrana.jpg",
         "descripcion": "Entraña",
         "unidadMedida": "kg",
-        "precio": 2.19
+        "precio": 2190,
+        "cantidad": 1
     },
     {
-        "id": 3,
+        "idProducto": 3,
         "imagen": "../assets/img/vacunos/peceto.jpg",
         "descripcion": "Peceto",
         "unidadMedida": "kg",
-        "precio": 1.69
+        "precio": 1690,
+        "cantidad": 1
     },
     {
-        "id": 4,
+        "idProducto": 4,
         "imagen": "../assets/img/vacunos/colita_cuadril.jpg",
         "descripcion": "Colita de cuadril",
         "unidadMedida": "kg",
-        "precio": 1.79
+        "precio": 1790,
+        "cantidad": 1
     },
     {
-        "id": 5,
+        "idProducto": 5,
         "imagen": "../assets/img/vacunos/bife_chorizo.jpg",
         "descripcion": "Bife de chorizo",
         "unidadMedida": "kg",
-        "precio": 1.59
+        "precio": 1590,
+        "cantidad": 1
     },
     {
-        "id": 6,
+        "idProducto": 6,
         "imagen": "../assets/img/vacunos/vacio.jpg",
         "descripcion": "Vacío",
         "unidadMedida": "kg",
-        "precio": 1.35
+        "precio": 1350,
+        "cantidad": 1
     },
     {
-        "id": 7,
+        "idProducto": 7,
         "imagen": "../assets/img/vacunos/lomo_con_cordon.jpg",
         "descripcion": "Lomo con cordón",
         "unidadMedida": "kg",
-        "precio": 1.99
+        "precio": 1990,
+        "cantidad": 1
     },
     {
-        "id": 8,
+        "idProducto": 8,
         "imagen": "../assets/img/vacunos/osobuco.jpg",
         "descripcion": "osobuco",
         "unidadMedida": "kg",
-        "precio": 850
+        "precio": 850,
+        "cantidad": 1
     },
     {
-        "id": 9,
+        "idProducto": 9,
         "imagen": "../assets/img/vacunos/bola_lomo.jpg",
         "descripcion": "Bola de Lomo",
         "unidadMedida": "kg",
-        "precio": 1.25
+        "precio": 1250,
+        "cantidad": 1
     },
     {
-        "id": 10,
+        "idProducto": 10,
         "imagen": "../assets/img/vacunos/cuadril.jpg",
         "descripcion": "Cuadril",
         "unidadMedida": "kg",
-        "precio": 1.29
+        "precio": 1290,
+        "cantidad": 1
     },
     {
-        "id": 11,
+        "idProducto": 11,
         "imagen": "../assets/img/vacunos/tapa_asado.jpg",
         "descripcion": "Tapa de asado",
         "unidadMedida": "kg",
-        "precio": 1.15
+        "precio": 1150,
+        "cantidad": 1
     },
     {
-        "id": 12,
+        "idProducto": 12,
         "imagen": "../assets/img/vacunos/matambre.jpg",
         "descripcion": "Matambre",
         "unidadMedida": "kg",
-        "precio": 1.15
+        "precio": 1150,
+        "cantidad": 1
     },
     {
-        "id": 13,
+        "idProducto": 13,
         "imagen": "../assets/img/vacunos/paleta.jpg",
         "descripcion": "Paleta",
         "unidadMedida": "kg",
-        "precio": 1.09
+        "precio": 1090,
+        "cantidad": 1
     },
     {
-        "id": 14,
+        "idProducto": 14,
         "imagen": "../assets/img/vacunos/picana.jpg",
         "descripcion": "Picaña",
         "unidadMedida": "kg",
-        "precio": 1.57
+        "precio": 1570,
+        "cantidad": 1
     },
     {
-        "id": 15,
+        "idProducto": 15,
         "imagen": "../assets/img/vacunos/asado_pampa.jpg",
         "descripcion": "Asado Pampa (5 costillas)",
         "unidadMedida": "kg",
-        "precio": 2.99
+        "precio": 2990,
+        "cantidad": 1
     },
     {
-        "id": 16,
+        "idProducto": 16,
         "imagen": "../assets/img/vacunos/asado_entero.jpg",
         "descripcion": "Asado entero",
         "unidadMedida": "kg",
-        "precio": 1.28
+        "precio": 1280,
+        "cantidad": 1
     },
     {
-        "id": 17,
+        "idProducto": 17,
         "imagen": "../assets/img/vacunos/ojo_bife.jpg",
         "descripcion": "Ojo de bife",
         "unidadMedida": "kg",
-        "precio": 1.79
+        "precio": 1790,
+        "cantidad": 1
     },
     {
-        "id": 18,
+        "idProducto": 18,
         "imagen": "../assets/img/vacunos/cima_vacio.jpg",
         "descripcion": "Cima del vacío",
         "unidadMedida": "kg",
-        "precio": 1.39
+        "precio": 1390,
+        "cantidad": 1
     },
     {
-        "id": 19,
+        "idProducto": 19,
         "imagen": "../assets/img/vacunos/tapa_nalga.jpg",
         "descripcion": "Tapa de Nalga",
         "unidadMedida": "kg",
-        "precio": 1.1
+        "precio": 1100,
+        "cantidad": 1
     },
     {
-        "id": 20,
+        "idProducto": 20,
         "imagen": "../assets/img/vacunos/bife_ancho_con_hueso.jpg",
         "descripcion": "Bife ancho c/hueso",
         "unidadMedida": "kg",
-        "precio": 1.15
+        "precio": 1150,
+        "cantidad": 1
     },
     {
-        "id": 21,
+        "idProducto": 21,
         "imagen": "../assets/img/vacunos/roast_beef.jpg",
         "descripcion": "Roast beef",
         "unidadMedida": "kg",
-        "precio": 1.05
+        "precio": 1050,
+        "cantidad": 1
     },
     {
-        "id": 22,
+        "idProducto": 22,
         "imagen": "../assets/img/vacunos/lomo_sin_cordon.jpg",
         "descripcion": "Lomo sin cordón",
         "unidadMedida": "kg",
-        "precio": 2.44
+        "precio": 2440,
+        "cantidad": 1
     },
     {
-        "id": 23,
+        "idProducto": 23,
         "imagen": "../assets/img/vacunos/marucha.jpg",
         "descripcion": "Marucha",
         "unidadMedida": "kg",
-        "precio": 1.15
+        "precio": 1150,
+        "cantidad": 1
     },
     {
-        "id": 24,
+        "idProducto": 24,
         "imagen": "../assets/img/vacunos/falda_parrillera.jpg",
         "descripcion": "Falda Parrillera",
         "unidadMedida": "kg",
-        "precio": 920
+        "precio": 920,
+        "cantidad": 1
     }
 ]

@@ -1,26 +1,31 @@
 class Producto {
-    constructor(id, imagen, descripcion, unidadMedida, precio) {
-        this.id = id;
+    constructor(idProducto, imagen, descripcion, unidadMedida, precio) {
+        this.idProducto = idProducto;
         this.imagen = imagen;
         this.descripcion = descripcion;
         this.unidadMedida = unidadMedida;
         this.precio = precio;
+        this.cantidad = 0;
     }
-}
-let vacunos = [];
-let almacen = [];
-let vinos = [];
+};
 
-function crearHtml(productos, contenedor) {
+var productos = [];
+var carrito = [];
+
+function crearHtml(arrayProductos, contenedor) {
     let html = "";
     let contador = 0;
-    productos.forEach((producto) => {
-        const { id, imagen, descripcion, unidadMedida, precio } = producto;
+    arrayProductos.forEach((producto) => {
+        const { idProducto, imagen, descripcion, unidadMedida, precio } = producto;
+
         contador++;
         if (contador == 1) {
             html = html + '<div class="row row-producto">';
         }
-        html = html + `<div class="col-12 col-lg-3" id="${id}"><img class="producto ps-5" src="${imagen}" alt="Photo"><p>${descripcion}<br>Precio por ${unidadMedida} ${precio}</p></div>`;
+        html = html + ` <div class="col-12 col-lg-3 box_producto">
+                            <img id="${idProducto}" class="producto ps-5" src="${imagen}" alt="Photo">
+                            <p>${descripcion}<br>Precio por ${unidadMedida} ${precio}</p>
+                        </div>`;
         if (contador == 4) {
             html = html + '</div>';
             contador = 0;
@@ -31,39 +36,51 @@ function crearHtml(productos, contenedor) {
         html = html + '</div>';
     }
     contenedor.innerHTML += html;
+    asignarEventoAgregarAlCarrito();
 }
 
-async function obtenerProductos() {
+async function obtenerYCargarProductos() {
     var response;
-    response = await fetch('../assets/json/almacen.json');
-    almacen = await response.json();
-    console.log(almacen);
-    response = await fetch('../assets/json/vacunos.json');
+    var vacunos = [];
+    var vinos = [];
+    var almacen = [];
+
+    response = await fetch("../assets/json/vacunos.json");
     vacunos = await response.json();
-    console.log(vacunos);
-    response = await fetch('../assets/json/vinos.json');
+    productos = productos.concat(vacunos);
+
+    response = await fetch("../assets/json/vinos.json");
     vinos = await response.json();
-    console.log(vinos);
+    productos = productos.concat(vinos);
+
+    response = await fetch("../assets/json/almacen.json");
+    almacen = await response.json();
+    productos = productos.concat(almacen);
+
+    let contenedor = document.getElementById("productos-vacunos");
+    if (contenedor != null) {
+        crearHtml(vacunos, contenedor);
+    }
+    contenedor = document.getElementById("productos-vinos");
+    if (contenedor != null) {
+        crearHtml(vinos, contenedor);
+    }
+    contenedor = document.getElementById("productos-almacen");
+    if (contenedor != null) {
+        crearHtml(almacen, contenedor);
+    }
 }
 
-
-obtenerProductos()
-
-let contenedor = document.getElementById("productos-vacunos");
-
-if (contenedor != null) {
-    crearHtml(vacunos, contenedor);
+function leerCarrito() {
+    let jsonCarrito = localStorage.getItem("carrito");
+    if (jsonCarrito != null) {
+        carrito = JSON.parse(jsonCarrito);
+    }
 }
 
-contenedor = document.getElementById("productos-vinos");
-if (contenedor != null) {
-    crearHtml(vinos, contenedor);
-}
+leerCarrito();
 
-contenedor = document.getElementById("productos-almacen");
-if (contenedor != null) {
-    crearHtml(almacen, contenedor);
-}
+obtenerYCargarProductos()
 
 let person = document.getElementById("person");
 let usuarioLogueado = false;
@@ -79,141 +96,93 @@ function leerCredenciales() {
         person.innerHTML = htmlUsuarioLogueado;
         usuarioLogueado = true;
     }
-
 }
 
 leerCredenciales();
 
-function LoguearDeslogearse() {
+function obtenerDirectorioRaiz() {
+    var rutaAbsoluta = self.location.href;
+    var posicionUltimaBarra = rutaAbsoluta.lastIndexOf("/");
+    var archivoHtml = rutaAbsoluta.substring(posicionUltimaBarra + "/".length, rutaAbsoluta.length - 5);
+    if (archivoHtml == "index") {
+        return "";
+    }
+    else {
+        return "..";
+    }
+}
+
+function loguearDeslogearse() {
     if (usuarioLogueado) {
         sessionStorage.clear();
         person.innerHTML = htmlUsuarioNoLogueado;
         usuarioLogueado = false;
     } else {
-        window.location.assign("./pages/login.html");
+        window.location.assign(ObtenerDirectorioRaiz() + "/pages/login.html");
     }
-
 }
 
 person.addEventListener("click", (e) => {
     e.preventDefault();
-    LoguearDeslogearse();
+    loguearDeslogearse();
 }
 );
 
-function agregarAlCarrito() {
-    console.log("Agregado"); //a desarrollar para la entrega final
-}
-/* a desarrollar para la entrega final
-producto.addEventListener("click", (e) => {
-    e.preventDefault();
-    agregarAlCarrito();
-}
-);
-*/
-
-
-
-
-/*
-let user = "";
-let pass = "";
-let usuarioLogueado = false;
-let productosSeleccionados = [];
-
-function loguear() {
-    let salir = false;
-    while ((!usuarioLogueado) & (!salir)) {
-        // por ahora tomo cualquier usuario y cualquier contraseña como válida
-        // más adelante veré como validar el nombre de usuario y la contraseña
-        user = prompt("Ingrese el nombre de usuario");
-        if (user != "") {
-            pass = prompt("Ingrese la contraseña");
-            if (pass != "") {
-                usuarioLogueado = true;
-            }
-            else if (pass === null) {
-                salir = true;
-            }
-        }
-        else if (aux === null) {
-            salir = true;
-        }
+function linkearCarrito() {
+    var carrito = document.getElementById("carrito");
+    if (carrito != null) {
+        carrito.href = obtenerDirectorioRaiz() + "/pages/carrito.html";
     }
 }
 
-function pedirCantidad(AConsiderarDecimales) {
-    if (AConsiderarDecimales) {
-        let aux = parseFloat(prompt("Ingrese la cantidad"));
+linkearCarrito();
+
+function encontrar(arr, id) {
+    return arr.find(el => el.idProducto == id);
+}
+function agregarAlCarrito(id) {
+    if (parseInt(id) > 0) {
+        let productoEncontrado = encontrar(carrito, id);
+        if (productoEncontrado == undefined) {
+            carrito.push(encontrar(productos, id));
+            actualizarCantidadEnCarrito();
+        }
+        else {
+            productoEncontrado.cantidad++;
+        }
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        localStorage.setItem("fechaCarrito", Date.now);
+    }
+}
+
+function mostrarMensajeProductoAgregado()
+{
+    Swal.fire({
+        position: 'top-end',
+        title: 'Producto agregado exitosamente al carrito!!!',
+        showConfirmButton: false,
+        timer: 2000
+    })
+}
+
+function asignarEventoAgregarAlCarrito() {
+    const productos = document.getElementsByClassName("box_producto");
+    for (let producto of productos) {
+        producto.addEventListener("click", (e) => {
+            agregarAlCarrito(e.target.id)
+            mostrarMensajeProductoAgregado();
+        })
+    }
+};
+
+function actualizarCantidadEnCarrito() {
+    const span = document.getElementById('cart-count');
+    if (carrito.length == 0) {
+        span.textContent = "";
     }
     else {
-        let aux = parseInt(prompt("Ingrese la cantidad"));
+        span.textContent = carrito.length;
     }
-    if (aux == NaN) {
-        aux = 0;
-    }
-    return aux;
 }
 
-function Producto(ADescripcion, ACantidad, APrecio) {
-    this.descripcion = ADescripcion;
-    this.cantidad = ACantidad;
-    this.precio = APrecio;
-}
-
-function obtenerTotal(){
-    let total = 0;
-    productosSeleccionados.forEach((producto)=>{
-        total = total + (precio.precio * producto.cantidad);
-    }
-    );
-    return total;
-}
-
-function obtenerListaProductos(){
-    let listaProductos = "";
-    productosSeleccionados.forEach((producto)=>{
-        listaProductos = listaProductos + precio.descripcion + " Cantidad: " + producto.cantidad + " precio: " + precio.precio + " Importe: " + (precio.precio * producto.cantidad) + "\n";
-    }
-    );
-    return listaProductos;
-}
-
-if (loguear()) {
-    let seguirComprado = true;
-    let auxProducto = "";
-    let auxCantidad = 0;
-    let tieneProductos = false;
-    let total = 0;
-
-    while (seguirComprado) {
-        auxProducto = prompt("Elija un producto: \n1 - Vacío ($ 1.550,00)\n2 - Entraña ($ 2.190,00)\n3 - Tapa de asado ($1.150,00)\n4 - Matambre ($1.290,00)\n5 - Finalizar");
-        if ((auxProducto == "1") || (auxProducto == "2") || (auxProducto == "3") || (auxProducto == "4")) {
-            auxCantidad = pedirCantidad(true);
-            if (auxCantidad > 0) {
-                switch (auxProducto) {
-                    case "1":
-                        productosSeleccionados.push(new Producto("Vacío", auxCantidad, 1550));
-                        break;
-                    case "2":
-                        productosSeleccionados.push(new Producto("Entraña", auxCantidad, 2190));
-                        break;
-                    case "3":
-                        productosSeleccionados.push(new Producto("Tapa de asado", auxCantidad, 1150));
-                        break;
-                    case "4":
-                        productosSeleccionados.push(new Producto("Matambre", auxCantidad, 1290));
-                        break;
-                }
-                tieneProductos = tieneProductos || ((auxCantidad > 0));
-            }
-        } else if (auxProducto == "5") {
-            seguirComprado = false;
-        }
-    }
-    if (tieneProductos) {
-        alert("Gracias por su pedido, el total a abonar es: " + obtenerTotal() + "\nSu lista de productos es la siguiente:\n" + obtenerListaProductos());
-    }
-
-}
-*/
+actualizarCantidadEnCarrito();
